@@ -1,0 +1,84 @@
+var anos = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
+var variacao = [-91.7, -83.5, 553.3, -266.9, 93.4, -202.8, 550.1, -473.0, -87.4, 150.3];
+
+option = {
+  title: {
+    text: 'Variação da chuva acumulada por ano (2016 a 2025)',
+    subtext: 'Fazenda Carnaúba - Taperoá - PB   |   diferença em relação ao ano anterior',
+    left: 'center',
+    textStyle: { fontSize: 18 },
+    subtextStyle: { fontSize: 13 }
+  },
+  tooltip: {
+    trigger: 'axis',
+    axisPointer: { type: 'shadow' },
+    formatter: function (params) {
+      var p = params[0];
+      var v = Number(p.value);
+      var sinal = v > 0 ? '+' : '';
+      var texto = v > 0 ? 'choveu mais que no ano anterior'
+                : (v < 0 ? 'choveu menos que no ano anterior' : 'sem variação');
+      return '<b>' + p.axisValue + '</b><br/>' +
+             p.marker + 'Variação: <b>' + sinal + v.toFixed(1) + ' mm</b><br/>' +
+             '<span style="font-size:11px;color:#666">' + texto + '</span>';
+    }
+  },
+  visualMap: {
+    min: -500,
+    max: 600,
+    calculable: true,
+    filterMode: 'filter',
+    orient: 'horizontal',
+    left: 'center',
+    bottom: 12,
+    itemWidth: 18,
+    itemHeight: 200,
+    text: ['+ chuva', '- chuva'],
+    dimension: 1,
+    inRange: { color: ['#c0392b', '#f7f7c8', '#1a9850'] }
+  },
+  grid: { left: '3%', right: '4%', bottom: 135, top: 90, containLabel: true },
+  xAxis: {
+    type: 'category',
+    data: anos,
+    name: 'Ano',
+    nameLocation: 'middle',
+    nameGap: 32,
+    nameTextStyle: { fontWeight: 'bold' }
+  },
+  yAxis: {
+    type: 'value',
+    name: 'Variação (mm)',
+    nameLocation: 'middle',
+    nameGap: 58,
+    nameTextStyle: { fontWeight: 'bold' }
+  },
+  dataZoom: [
+    { type: 'slider', xAxisIndex: 0, start: 0, end: 100, bottom: 78, height: 22 },
+    { type: 'inside', xAxisIndex: 0 }
+  ],
+  series: [
+    {
+      name: 'Variação (mm)',
+      type: 'bar',
+      data: variacao,
+      barMaxWidth: 48,
+      label: {
+        show: true,
+        position: 'top',
+        fontSize: 11,
+        formatter: function (p) {
+          var v = Number(p.value);
+          return (v > 0 ? '+' : '') + v.toFixed(1);
+        }
+      },
+      markLine: {
+        symbol: 'none',
+        silent: true,
+        lineStyle: { color: '#888', type: 'solid' },
+        data: [{ yAxis: 0 }],
+        label: { show: false }
+      }
+    }
+  ]
+};
