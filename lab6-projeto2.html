@@ -1,4 +1,49 @@
-var anos = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
+<!--
+	THIS EXAMPLE WAS DOWNLOADED FROM https://echarts.apache.org/examples/en/editor.html?c=bar-negative2&code=lVXbbttGEH33VwxiFJRhi6FE62rHRVogbQG7CJogAWr4YUiupEXJXXa5VGSn_piiD_mHvurHOrNcUlLhBIkAYW-zM7Nnzhyu0QAqXcELuA2G0WAcnAGPEz9O_ThrxmHkx4Efh36M_Xjux1Fwd3HEzukvMUXNAfqzQTg5g_40DkdnMBrFYUyr4Xgczs5gFofnvIqG4ZQPo3BAy_NJHEZ8ZcKnA9qNyfGRLq3Uinx-PAKw0uZi7qa0EBs7h-Adh91-2v6jIUNIV_UaAdO6qHOkdandq6HHLwYETvgkOHMOqjrxPl7hg1Bk_SMahdt_E4Q-vMVSGL39m6avfyDrv-ifyYUwQm0_IYgCjMh9YHo0B0FlhZHaeP-5WLDzVPC23-OAb-y9ewUstLJv5APNB1N4PEjqKZsYHsnE2VmtcyvLDgojl0thKBhuZOVD8fS1lhycHdn7kpwE1Qoz_SFowy20KdA6k0WtUod1r0SDRXXinQNXFkoqQbN_G1FddgdrOvi1LhJhemW4xrwWJ_vHlVSYk8kariCC7yE4DYDSCPZt-MFMm84mXem1qKFAWcGftQCH7R6-_u7uN4feGi4PLwsm-1O3OX5F9XOEdQUMupSNsLVREFwmVwGcQhkyiu_4VbQKLp8nV5eJec5nhzmUYYHmD2HYasfIOXg_DQqnsA6tfiU3IusNTtgUiuLzPoPLqkQFFVPhxTMmQr9iJgwG5eYi1bk28-PxePzMRWgwdDnyrSsPcMeYtaxqzG-w40wh1Rz6oyhqiFDgZg7jdpVinlIDJcxBa2rhySJzgvBGZ0ykZuG5po0kltPuimYPlCnmX2iCRFurC2L0sFlLK4r3MrMrboTd1s9CLld0edhm1XTrbXDatDkLUN9P7xqLTFLZKyIxefKO1G-olq6VGsjo_nEaxbNhwvePF5PFJHXadzzA2XQUBXc70JZGZnzTPyL-juyo1Tip4JwX3UtikjmrCdwZaVjKAEh1jYnIG_wad5uXRKauZ5t-TNGKpTb3HpoMLc6dTjdrhQVbvVTaG_DGtaZb7pFBIbMsF3tnP3GFYw8sb7z9v5q897AGic4zEoL2sfdPZOf6ec_7od72iqLV0q9Ka-SL-01pMSK_awb51l3eKVkuM6ZUA-svKhPEYEK_smjID81I06k0xJ6uThP64KxaWg1bEexcSuJORmkfunS5OIJVJCCCMPKZ-Hb9IjAdlAm29G-r3H4w212yuMGNb4RzjxV1UEOjNhplsdIf9tvS6Y-upMeeaNgFYoHvvh--Iz4v-zvF_wpx31NL0t5DcWdt25e63R2G0o1tLiyb11J1X3X3wPuCSECOlFYtidy-zJ3KHD49p9sdk3yPB8fTKTd1SxVNXOm-ebsK3H5sWU9F9hKyD7mHeoF5RS3cpt4J693R48V_&enc=deflate
+	⚠ Please be aware that this chart is not an official demo of Apache ECharts but is made by user-generated code.
+-->
+<!DOCTYPE html>
+<html lang="en" style="height: 100%">
+<head>
+  <meta charset="utf-8">
+</head>
+<body style="height: 100%; margin: 0">
+  <div id="container" style="height: 100%"></div>
+
+  
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/echarts.min.js"></script>
+  
+  <!-- Uncomment this line if you want to dataTool extension
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/dataTool.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use gl extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-gl/dist/echarts-gl.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-stat extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-stat/dist/ecStat.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to echarts-graph-modularity extension
+  <script type="text/javascript" src="https://echarts.apache.org/en/js/vendors/echarts-graph-modularity/dist/echarts-graph-modularity.min.js"></script>
+  -->
+  <!-- Uncomment this line if you want to use map
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@4.9.0/map/js/world.js"></script>
+  -->
+  <!-- Uncomment these two lines if you want to use bmap extension
+  <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_API_KEY"></script>
+  <script type="text/javascript" src="https://fastly.jsdelivr.net/npm/echarts@5/dist/extension/bmap.min.js"></script>
+  -->
+
+  <script type="text/javascript">
+    var dom = document.getElementById('container');
+    var myChart = echarts.init(dom, null, {
+      renderer: 'canvas',
+      useDirtyRect: false
+    });
+    var app = {};
+    
+    var option;
+
+    var anos = ['2016', '2017', '2018', '2019', '2020', '2021', '2022', '2023', '2024', '2025'];
 var variacao = [-91.7, -83.5, 553.3, -266.9, 93.4, -202.8, 550.1, -473.0, -87.4, 150.3];
 
 option = {
@@ -82,3 +127,12 @@ option = {
     }
   ]
 };
+
+    if (option && typeof option === 'object') {
+      myChart.setOption(option);
+    }
+
+    window.addEventListener('resize', myChart.resize);
+  </script>
+</body>
+</html>
